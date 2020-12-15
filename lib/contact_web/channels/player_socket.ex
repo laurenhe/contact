@@ -1,8 +1,22 @@
-defmodule ContactWeb.UserSocket do
+defmodule ContactWeb.PlayerSocket do
   use Phoenix.Socket
+
+  alias Contact.Player
 
   ## Channels
   # channel "room:*", ContactWeb.RoomChannel
+  channel "lobby", Contact.LobbyChannel
+
+  ## Transports
+  transport :websocket, Phoenix.Transports.Websocket
+
+  def connect(%{"id" => player_id}, socket) do
+    {:ok, assign(socket, :player_id, player_id)}
+  end
+
+  def connect(_, _socket), do: :error
+
+  def id(socket), do: "players_socket:#{socket.assigns.player_id}"
 
   # Socket params are passed from the client and can
   # be used to verify and authenticate a user. After
@@ -15,10 +29,10 @@ defmodule ContactWeb.UserSocket do
   #
   # See `Phoenix.Token` documentation for examples in
   # performing token verification on connect.
-  @impl true
-  def connect(_params, socket, _connect_info) do
-    {:ok, socket}
-  end
+  # @impl true
+  # def connect(_params, socket, _connect_info) do
+  #  {:ok, socket}
+  # end
 
   # Socket id's are topics that allow you to identify all sockets for a given user:
   #
@@ -30,6 +44,6 @@ defmodule ContactWeb.UserSocket do
   #     ContactWeb.Endpoint.broadcast("user_socket:#{user.id}", "disconnect", %{})
   #
   # Returning `nil` makes this socket anonymous.
-  @impl true
-  def id(_socket), do: nil
+  #@impl true
+  #def id(_socket), do: nil
 end

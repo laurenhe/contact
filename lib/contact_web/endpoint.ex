@@ -10,7 +10,7 @@ defmodule ContactWeb.Endpoint do
     signing_salt: "vAF63tVh"
   ]
 
-  socket "/socket", ContactWeb.UserSocket,
+  socket "/socket", ContactWeb.PlayerSocket,
     websocket: true,
     longpoll: false
 
