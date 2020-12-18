@@ -1,6 +1,6 @@
 WIP
 
-# Contact
+## Contact
 
 How to play:
 
@@ -12,6 +12,8 @@ How to play:
   * If other guesser(s) think they know the guesser's word, they shout out 'Contact!' and counting down 3, 2, 1 guesser and other guesser(s) say the word in mind at the       same time
   * If the word is the same and the keeper has not guessed the right word, the keeper will give the next letter in their word and the process repeats
   * Guessers will have to come up with words and corresponding descriptions starting with the first two letters of the keeper's word
+
+## Set up 
 
   * Install dependencies with `mix deps.get`
   * Create and migrate your database with `mix ecto.setup`
